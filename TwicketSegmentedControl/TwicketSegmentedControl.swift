@@ -161,26 +161,31 @@ open class TwicketSegmentedControl: UIControl {
     }
 
     private func configureViews() {
-        containerView.frame = CGRect(x: Constants.leadingTrailingMargin,
-                                     y: Constants.topBottomMargin,
-                                     width: bounds.width - Constants.leadingTrailingMargin * 2,
-                                     height: Constants.height)
-        let frame = containerView.bounds
-        backgroundView.frame = frame
-        selectedContainerView.frame = frame
-        sliderView.frame = CGRect(x: 0, y: 0, width: segmentWidth, height: backgroundView.frame.height)
-
-        let cornerRadius = backgroundView.frame.height / 2
-        [backgroundView, selectedContainerView].forEach { $0.layer.cornerRadius = cornerRadius }
-        sliderView.cornerRadius = cornerRadius
-
-        backgroundColor = .white
-        backgroundView.backgroundColor = segmentsBackgroundColor
-        selectedContainerView.backgroundColor = sliderBackgroundColor
-
-        if !isSliderShadowHidden {
-            selectedContainerView.addShadow(with: sliderBackgroundColor)
-        }
+      containerView.frame = CGRect(x: Constants.leadingTrailingMargin,
+                                 y: Constants.topBottomMargin,
+                                 width: bounds.width - Constants.leadingTrailingMargin * 2,
+                                 height: Constants.height)
+      let frame = containerView.bounds
+      backgroundView.frame = frame
+      selectedContainerView.frame = frame
+      sliderView.frame = CGRect(x: 0, y: 0, width: segmentWidth, height: backgroundView.frame.height)
+  
+      let cornerRadius = backgroundView.frame.height / 2
+      [backgroundView, selectedContainerView].forEach { $0.layer.cornerRadius = cornerRadius }
+      sliderView.cornerRadius = cornerRadius
+  
+      containerView.layer.cornerRadius = cornerRadius
+  
+      containerView.layer.borderWidth = 0.8
+      containerView.layer.borderColor = UIColor(red: 241/255, green: 0/255, blue: 47/255, alpha: 1.0).cgColor
+  
+      backgroundColor = .white
+      backgroundView.backgroundColor = segmentsBackgroundColor
+      selectedContainerView.backgroundColor = sliderBackgroundColor
+  
+      if !isSliderShadowHidden {
+        selectedContainerView.addShadow(with: sliderBackgroundColor)
+      }
     }
 
     private func setupAutoresizingMasks() {
